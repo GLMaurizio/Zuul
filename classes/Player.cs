@@ -15,11 +15,23 @@ class Player
     }
 
     // methods
-    public void Damage() {}
+    public void Damage(int amount) {}
 
     // Health
-    public void Heal() {}
+    public void Heal(int amount) {}
 
-    public void IsAlive() {}
+    public bool IsAlive()
+    {
+
+    if health != 0 { 
+        Console.WriteLine("Alive");
+        return true;
+        }
+    
+    else {
+        Console.WriteLine("Dead");
+        return false;
+        }
+    }
 
 }
