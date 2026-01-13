@@ -23,15 +23,13 @@ class Player
     public bool IsAlive()
     {
 
-    if health != 0 { 
+    if (health != 0) {
         Console.WriteLine("Alive");
-        return true;
-        }
+        return true;}
     
     else {
         Console.WriteLine("Dead");
-        return false;
-        }
+        return false;}
     }
 
 }

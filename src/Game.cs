@@ -112,6 +112,9 @@ class Game
 			case "look":
 				Console.WriteLine(player.CurrentRoom.GetLongDescription());
 				break;
+			case "status":
+				player.IsAlive();
+				break;
 		}
 
 		return wantToQuit;
