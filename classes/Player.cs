@@ -15,10 +15,18 @@ class Player
     }
 
     // methods
-    public void Damage(int amount) {}
+    public int Damage(int amount){
+        health -= amount;
+
+        if (health < 0) health = 0;
+        
+        return health;
+    }
 
     // Health
-    public void Heal(int amount) {}
+    public void Heal(int amount){
+        health += amount;
+    }
 
     public bool IsAlive()
     {

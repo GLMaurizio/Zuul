@@ -1,5 +1,4 @@
 using System;
-
 class Game
 {
 	// Private fields
@@ -156,8 +155,10 @@ class Game
 			return;
 		}
 
+		else {
 		player.CurrentRoom = nextRoom;
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
+		}
 	}
 
 }
