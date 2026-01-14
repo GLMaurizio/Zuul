@@ -10,12 +10,12 @@ class Game
 	{
 		parser = new Parser();
 		player = new Player();
-		CreateRooms();	
+		CreateRooms();
 	}
 
 	// Initialise the Rooms (and the Items)
 	private void CreateRooms()
-	
+
 	{
 		// Create the rooms
 		Room outside = new Room("outside the main entrance of the university");
@@ -25,7 +25,7 @@ class Game
 		Room office = new Room("in the computing admin office");
 		Room basement = new Room("You are now in the basement");
 		Room floor1 = new Room("You are now at the first floor");
-		
+
 		// Initialise room exits
 		outside.AddExit("east", theatre);
 		outside.AddExit("south", lab);
@@ -91,7 +91,7 @@ class Game
 	{
 		bool wantToQuit = false;
 
-		if(command.IsUnknown())
+		if (command.IsUnknown())
 		{
 			Console.WriteLine("I don't know what you mean...");
 			return wantToQuit; // false
@@ -122,7 +122,7 @@ class Game
 	// ######################################
 	// implementations of user commands:
 	// ######################################
-	
+
 	// Print out some help information.
 	// Here we print the mission and a list of the command words.
 	private void PrintHelp()
@@ -138,7 +138,7 @@ class Game
 	// room, otherwise print an error message.
 	private void GoRoom(Command command)
 	{
-		if(!command.HasSecondWord())
+		if (!command.HasSecondWord())
 		{
 			// if there is no second word, we don't know where to go...
 			Console.WriteLine("Go where?");
@@ -149,16 +149,21 @@ class Game
 
 		// Try to go to the next room.
 		Room nextRoom = player.CurrentRoom.GetExit(direction);
+		
+		// When the player doesnt go to a room then command not valid.
 		if (nextRoom == null)
 		{
-			Console.WriteLine("There is no door to "+direction+"!");
+			Console.WriteLine("There is no door to " + direction + "!");
 			return;
 		}
 
-		else {
+		// When player going to next room then current room will chance and the player will take 5 damage while
+		// your new health total will be showed and new room description.
 		player.CurrentRoom = nextRoom;
+		player.Damage(1);
+		Console.WriteLine("You took 5 damage!"); 
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
-		}
+
 	}
 
 }

@@ -15,28 +15,36 @@ class Player
     }
 
     // methods
-    public int Damage(int amount){
-        health -= amount;
+    public void Damage(int amount){
+        health--;
+        health--;
+        health--;
+        health--;
+        health--;
 
-        if (health < 0) health = 0;
-        
-        return health;
+        return;
     }
 
     // Health
     public void Heal(int amount){
-        health += amount;
+        health++;
+        health++;
+        health++;
+        health++;
+        health++;
+
+        return;
     }
 
     public bool IsAlive()
     {
 
     if (health != 0) {
-        Console.WriteLine("Alive");
+        Console.WriteLine("The player is alive with " + health + " health");
         return true;}
     
     else {
-        Console.WriteLine("Dead");
+        Console.WriteLine("The player is dead and has no remaining health points left.");
         return false;}
     }
 
