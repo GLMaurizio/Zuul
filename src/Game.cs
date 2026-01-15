@@ -5,6 +5,9 @@ class Game
 	private Parser parser;
 	private Player player;
 
+	// added a private room called finish
+	private Room finish;
+
 	// Constructor
 	public Game()
 	{
@@ -26,12 +29,18 @@ class Game
 		Room basement = new Room("You are now in the basement");
 		Room floor1 = new Room("You are now at the first floor");
 
+		// if you get this room you finish
+		finish = new Room("You won!");
+
 		// Initialise room exits
 		outside.AddExit("east", theatre);
 		outside.AddExit("south", lab);
 		outside.AddExit("west", pub);
 		outside.AddExit("down", basement);
 		outside.AddExit("up", floor1);
+
+		// TEST EXIT FOR FINISH
+		outside.AddExit("finish", finish);
 
 		basement.AddExit("up", outside);
 
@@ -67,6 +76,17 @@ class Game
 		{
 			Command command = parser.GetCommand();
 			finished = ProcessCommand(command);
+
+			// when player is dead game ends
+			if (!player.IsAlive())
+			{
+				finished = true;
+			}
+
+			// If players current room is in finish then the game ends
+			if (player.CurrentRoom == finish) {
+				finished = true;
+			}
 		}
 		Console.WriteLine("Thank you for playing.");
 		Console.WriteLine("Press [Enter] to continue.");
@@ -159,11 +179,10 @@ class Game
 
 		// When player going to next room then current room will chance and the player will take 5 damage while
 		// your new health total will be showed and new room description.
-		player.CurrentRoom = nextRoom;
-		player.Damage(1);
-		Console.WriteLine("You took 5 damage!"); 
+		player.CurrentRoom = nextRoom; 
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
-
+		player.Damage(1);
+		Console.WriteLine("You took 5 damage!");		
 	}
 
 }
