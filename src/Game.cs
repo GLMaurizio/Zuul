@@ -19,11 +19,11 @@ class Game
 	// Initialise the Rooms (and the Items)
 	private void CreateRooms()
 
-	{	
+	{
 		// Items
-		Item bandage = new Item(0,1 + "If used you will get a boost of 10 health");
-		Item medkit = new Item(0,2 + "If used you will get a boost of 25 health");
-			
+		Item bandage = new Item(0, 1 + "If used you will get a boost of 10 health");
+		Item medkit = new Item(0, 2 + "If used you will get a boost of 25 health");
+
 		// Create the rooms
 		Room outside = new Room("outside the main entrance of the university");
 		Room theatre = new Room("in a lecture theatre");
@@ -88,7 +88,8 @@ class Game
 			}
 
 			// If players current room is in finish then the game ends
-			if (player.CurrentRoom == finish) {
+			if (player.CurrentRoom == finish)
+			{
 				finished = true;
 			}
 		}
@@ -173,7 +174,7 @@ class Game
 
 		// Try to go to the next room.
 		Room nextRoom = player.CurrentRoom.GetExit(direction);
-		
+
 		// When the player doesnt go to a room then command not valid.
 		if (nextRoom == null)
 		{
@@ -183,10 +184,10 @@ class Game
 
 		// When player going to next room then current room will chance and the player will take 5 damage while
 		// your new health total will be showed and new room description.
-		player.CurrentRoom = nextRoom; 
+		player.CurrentRoom = nextRoom;
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 		player.Damage(1);
-		Console.WriteLine("You took 5 damage!");		
+		Console.WriteLine("You took 5 damage!");
 	}
 
 }
