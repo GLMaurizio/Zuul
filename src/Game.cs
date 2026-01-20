@@ -21,8 +21,9 @@ class Game
 
 	{	
 		// Items
-		Item medkit = new Item(0,1 + "If used you will get a boost of 25 health");
-
+		Item bandage = new Item(0,1 + "If used you will get a boost of 10 health");
+		Item medkit = new Item(0,2 + "If used you will get a boost of 25 health");
+			
 		// Create the rooms
 		Room outside = new Room("outside the main entrance of the university");
 		Room theatre = new Room("in a lecture theatre");
