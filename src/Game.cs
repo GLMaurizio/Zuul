@@ -19,7 +19,10 @@ class Game
 	// Initialise the Rooms (and the Items)
 	private void CreateRooms()
 
-	{
+	{	
+		// Items
+		Item medkit = new Item(0,1 + "If used you will get a boost of 25 health");
+
 		// Create the rooms
 		Room outside = new Room("outside the main entrance of the university");
 		Room theatre = new Room("in a lecture theatre");
